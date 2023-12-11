@@ -1,0 +1,20 @@
+# docker compose up -d --build
+# docker compose down -v --remove-orphans
+version: '3.9'
+
+services:
+  pipeline:
+    build:
+      context: ../dockerfile/
+      dockerfile: dockerfile
+      no_cache: true
+    environment:
+      TZ: America/Santiago
+      KUMA_URL: https://kuma.yourdomain.com
+      KUMA_USERNAME: user
+      KUMA_PASSWORD: pass
+      POSTGRES_HOST: host
+      POSTGRES_PORT: 5432
+      POSTGRES_DATABASE: db
+      POSTGRES_USERNAME: user
+      POSTGRES_PASSWORD: pass
